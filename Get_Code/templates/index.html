@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Repos</title>
+  </head>
+  <body>
+    <h3>GitHub Repos</h3>
+    <form  method="POST">
+      <input type="text" name="username" value="" required>
+      {% csrf_token %}
+      <input type="submit" name="" value="Get Git Repos">
+    </form>
+    {% if repos %}
+    <ul>
+    {% for repo in repos %}
+        <li><a href="/{{ repo.owner.login }}/{{ repo.name }}/">{{ repo.name }}</a></li>
+    {% endfor %}
+    </ul>
+    {% endif %}
+  </body>
+</html>

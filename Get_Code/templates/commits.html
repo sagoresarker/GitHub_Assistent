@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Commits</title>
+  </head>
+  <body>
+    <h3>Commits:</h3>
+    {% if commits %}
+    <ul>
+      <form method="POST">
+        {% csrf_token %}
+        {% for ele in commits %}
+            <input type="checkbox" name="ref_num" value="{{ ele.sha }}">{{ ele.commit.message }}<br>
+        {% endfor %}
+        <input type="submit" name="" value="Submit"> 
+      </form>
+    </ul>
+    {% endif %}
+  </body>
+</html>

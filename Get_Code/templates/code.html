@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Create two equal columns that floats next to each other */
+    .body{
+      background-color:
+    }
+    .left-column,.right-column {
+      float: left;
+      width: 50%;
+      padding: 10px;
+      height: auto; /* Should be removed. Only for demonstration */
+    }
+    .left-column{
+      background-color:#F2E5E2;
+    }
+    .right-column{
+      background-color:#E9D7D3;
+    }
+
+    /* Clear floats after the columns */
+    .row:after {
+      content: "";
+      display: table;
+      clear: both;
+    }
+    </style>
+    <title>Code</title>
+  </head>
+  <body>
+    <h3>I am almost done</h3>
+    <div class="row">
+      <div class="left-column">
+        <pre>{{soup_pretty1}}
+      </div>
+      <div class="right-column">
+        <pre>{{soup_pretty2}}
+      </div>
+    </div>
+  </body>
+</html>
