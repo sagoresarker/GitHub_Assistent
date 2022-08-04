@@ -33,3 +33,23 @@ def commit_view(request, user, name, *args, **kwargs):
         response = requests.get(url)
         commits = response.json()
         return render(request, 'commits.html', context={'commits':commits,'repo_name':repo_name,'username':username})
+
+
+def code_view(request, user, name, ref1, ref2, file, *args, **kwargs):
+    username = user
+    repo_name = name
+    refference_head = ref1
+    refference_base = ref2
+    filename = file.replace("+","/")
+    url1 = "https://github.com/%s/%s/raw/%s/%s" %(username,repo_name,refference_head,filename)
+    r1 = requests.get(url1)
+    htmlContent1 = r1.content
+    soup1 = BeautifulSoup(htmlContent1, 'html.parser')
+    soup_pretty1 = soup1.prettify()
+    url2 = "https://github.com/%s/%s/raw/%s/%s" %(username,repo_name,refference_base,filename)
+    r2 = requests.get(url2)
+    htmlContent2 = r2.content
+    soup2 = BeautifulSoup(htmlContent2, 'html.parser')
+    soup_pretty2 = soup2.prettify()
+    print(soup_pretty2)
+    return render(request, 'code.html', context={'soup_pretty1':soup_pretty1,'soup_pretty2':soup_pretty2})
